@@ -1,0 +1,14 @@
+# GitHub Repository Setup Commands
+# Run these commands after creating your GitHub repository
+
+# Add your GitHub repository (replace YOUR_USERNAME with your actual GitHub username)
+git remote add origin https://github.com/YOUR_USERNAME/trading-signal-generator.git
+
+# Push your code to GitHub
+git push -u origin main
+
+# Verify it worked
+git remote -v
+
+# Example for user 'pratcasley':
+# git remote add origin https://github.com/pratcasley/trading-signal-generator.git

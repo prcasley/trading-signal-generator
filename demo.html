@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Signal Generator - Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .animate-pulse-slow { animation: pulse 3s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-40 backdrop-blur-sm bg-opacity-90">
+        <div class="px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
+                        <svg class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-semibold text-gray-900">TradingSignals</h1>
+                        <p class="text-xs text-gray-500">v2.0 Demo</p>
+                    </div>
+                </div>
+
+                <!-- Search -->
+                <div class="flex-1 max-w-2xl mx-8">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        <input type="text" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Search stocks, symbols, or companies...">
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 rounded-lg text-gray-400 hover:text-gray-500 hover:bg-gray-100">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5-5-5h5v-12z" />
+                        </svg>
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <div class="h-2 w-2 bg-green-400 rounded-full animate-pulse-slow"></div>
+                        <span class="text-sm text-gray-500 font-medium">Live</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <!-- Page Header -->
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-900">Trading Dashboard</h1>
+            <p class="mt-2 text-gray-600">Real-time trading signals and market analysis</p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-6">
+            <div class="bg-white overflow-hidden rounded-lg border border-gray-200 p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dt class="text-sm font-medium text-gray-500 truncate">Active Signals</dt>
+                        <dd class="text-lg font-medium text-gray-900">24</dd>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-green-600 font-medium">+12%</span>
+                        <span class="text-gray-500 ml-2">from last month</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white overflow-hidden rounded-lg border border-gray-200 p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" />
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dt class="text-sm font-medium text-gray-500 truncate">Success Rate</dt>
+                        <dd class="text-lg font-medium text-gray-900">87%</dd>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-green-600 font-medium">+2.1%</span>
+                        <span class="text-gray-500 ml-2">from last month</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white overflow-hidden rounded-lg border border-gray-200 p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" />
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dt class="text-sm font-medium text-gray-500 truncate">Total Returns</dt>
+                        <dd class="text-lg font-medium text-gray-900">+15.2%</dd>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-green-600 font-medium">+3.4%</span>
+                        <span class="text-gray-500 ml-2">from last month</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white overflow-hidden rounded-lg border border-gray-200 p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dt class="text-sm font-medium text-gray-500 truncate">Active Stocks</dt>
+                        <dd class="text-lg font-medium text-gray-900">156</dd>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-green-600 font-medium">+8</span>
+                        <span class="text-gray-500 ml-2">from last month</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signals Table -->
+        <div class="bg-white rounded-lg border border-gray-200">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-medium text-gray-900">Latest Signals</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Symbol</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Signal</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Confidence</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Change</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200" id="signals-tbody">
+                        <!-- Signals will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Mock data for demonstration
+        const mockSignals = [
+            { symbol: 'AAPL', type: 'BUY', confidence: 85, price: '$150.25', change: '+1.2%', time: '2 min ago' },
+            { symbol: 'GOOGL', type: 'SELL', confidence: 72, price: '$2800.50', change: '-0.5%', time: '5 min ago' },
+            { symbol: 'MSFT', type: 'BUY', confidence: 90, price: '$280.75', change: '+0.8%', time: '8 min ago' },
+            { symbol: 'TSLA', type: 'HOLD', confidence: 65, price: '$220.30', change: '+2.1%', time: '12 min ago' },
+            { symbol: 'AMZN', type: 'BUY', confidence: 78, price: '$3200.15', change: '-0.3%', time: '15 min ago' },
+            { symbol: 'NVDA', type: 'BUY', confidence: 88, price: '$450.80', change: '+3.2%', time: '18 min ago' },
+            { symbol: 'META', type: 'SELL', confidence: 74, price: '$320.45', change: '+1.8%', time: '22 min ago' }
+        ];
+
+        function getSignalColor(type) {
+            switch(type) {
+                case 'BUY': return 'bg-green-100 text-green-800';
+                case 'SELL': return 'bg-red-100 text-red-800';
+                case 'HOLD': return 'bg-yellow-100 text-yellow-800';
+                default: return 'bg-gray-100 text-gray-800';
+            }
+        }
+
+        function getChangeColor(change) {
+            return change.startsWith('+') ? 'text-green-600' : 'text-red-600';
+        }
+
+        function renderSignals() {
+            const tbody = document.getElementById('signals-tbody');
+            tbody.innerHTML = mockSignals.map(signal => `
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${signal.symbol}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getSignalColor(signal.type)}">
+                            ${signal.type}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${signal.confidence}%</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${signal.price}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm ${getChangeColor(signal.change)}">${signal.change}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${signal.time}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Simulate real-time updates
+        function updateSignals() {
+            // Randomly update prices and changes
+            mockSignals.forEach(signal => {
+                const change = (Math.random() - 0.5) * 4; // -2% to +2%
+                signal.change = (change >= 0 ? '+' : '') + change.toFixed(1) + '%';
+                signal.time = Math.floor(Math.random() * 30) + ' min ago';
+            });
+            renderSignals();
+        }
+
+        // Initial render
+        renderSignals();
+
+        // Update every 5 seconds to simulate real-time
+        setInterval(updateSignals, 5000);
+
+        // Add status indicator
+        const statusIndicator = document.querySelector('.animate-pulse-slow');
+        let isOnline = true;
+        setInterval(() => {
+            isOnline = !isOnline;
+            statusIndicator.style.backgroundColor = isOnline ? '#10B981' : '#F59E0B';
+        }, 3000);
+
+        console.log('🚀 Trading Signal Generator Demo Loaded');
+        console.log('📊 Backend API would be at: http://localhost:8001');
+        console.log('🔄 Signals updating every 5 seconds');
+    </script>
+</body>
+</html>
