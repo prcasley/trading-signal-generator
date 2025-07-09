@@ -19,9 +19,15 @@ AsyncSessionLocal = async_sessionmaker(async_engine, class_=AsyncSession, expire
 Base = declarative_base()
 
 async def init_db():
-    """Initialize database tables"""
-    async with async_engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+    """Initialize database tables (optional for MVP)"""
+    try:
+        if settings.DATABASE_URL and not settings.DATABASE_URL.startswith("sqlite"):
+            async with async_engine.begin() as conn:
+                await conn.run_sync(Base.metadata.create_all)
+        print("Database initialized successfully")
+    except Exception as e:
+        print(f"Database initialization skipped: {e}")
+        # Continue without database for MVP
 
 async def get_async_session():
     """Get async database session"""

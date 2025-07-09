@@ -6,22 +6,17 @@ from typing import List
 from pydantic import BaseSettings
 
 class Settings(BaseSettings):
-    # Database
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "postgresql://admin:password123@localhost:5432/trading_signals")
+    # Database (optional for MVP)
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./trading_signals.db")
     
-    # Redis
-    REDIS_URL: str = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+    # Redis (optional for MVP)
+    REDIS_URL: str = os.getenv("REDIS_URL", "")
     
     # API Keys
     ALPHA_VANTAGE_API_KEY: str = os.getenv("ALPHA_VANTAGE_API_KEY", "demo")
     
     # CORS
-    ALLOWED_ORIGINS: List[str] = [
-        "http://localhost:3000",
-        "http://localhost:3001",
-        "https://localhost:3000",
-        "https://localhost:3001"
-    ]
+    ALLOWED_ORIGINS: List[str] = os.getenv("ALLOWED_ORIGINS", "*").split(",") if os.getenv("ALLOWED_ORIGINS") else ["*"]
     
     # Real-time settings
     SIGNAL_UPDATE_INTERVAL: int = 30  # seconds
